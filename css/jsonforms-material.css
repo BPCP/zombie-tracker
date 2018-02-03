@@ -1,0 +1,46 @@
+md-input-container {
+    width: 100%;
+    padding-right: 1em;
+}
+
+md-input-container ng-transclude > md-select {
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+    order: 2;
+    display: block;
+    margin-top: 0;
+    background: none;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-width: 0 0 1px 0;
+    line-height: 26px;
+    height: 30px;
+    -ms-flex-preferred-size: 26px;
+    border-radius: 0;
+    border-style: none;
+    width: 100%;
+    box-sizing: border-box;
+    float: left;
+}
+md-datepicker {
+  display: flex;
+}
+md-datepicker .md-datepicker-input-container{
+  width: 100%;
+}
+md-datepicker .md-datepicker-input {
+  max-width: 100%;
+}
+.md-select-value .md-select-icon {
+  margin: 0;
+}
+.jsf-control-array-element {
+    flex: grow;
+}
+.jsf-control-array-element-delete {
+    flex: nogrow;
+}
+/* workaround for https://github.com/angular/material/issues/6214 */
+-.md-errors-spacer:empty {
+  display: none;
+}

@@ -1,5 +1,5 @@
 var app = angular.module('ZMain', ['jsonforms','jsonforms-bootstrap']);
-app.constant('apiBase','http://zdata.bpcphosting.org');
+app.constant('apiBase','https://zdata.bpcphosting.org');
 
 app.controller('FullPage',['data_schemas','UISchemas','$scope','$http','init_autoComplete','event_groups',
 	function(data_schemas,UISchemas,$scope,$http,init_autoComplete,event_groups) {

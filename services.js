@@ -1,5 +1,5 @@
 var ZMain = angular.module('ZMain');
-var apiBase='http://zdata.bpcphosting.org';
+var apiBase='https://zdata.bpcphosting.org';
 
 	ZMain.factory('search_list', function($http) {
 	 	search_list = [];

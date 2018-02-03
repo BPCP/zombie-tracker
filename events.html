@@ -1,0 +1,12 @@
+<div class="col-sm-8 jsf">
+ <button visible="false" class="btn-primary" ng-click="tc.add_event(tc.group,tc.data.parcel_id)">Add New {{tc.group}}</button>
+  <uib-accordion close-others="true" >
+      <div ng-repeat="event in tc.data.events  | filter : {group:tc.group}:true">
+        <div uib-accordion-group class="panel-default" heading="{{event.xdata.action}} - {{event.effective_date}}" is-open="false" >
+            <jsonforms schema="tc.taskSchema" uischema="tc.taskUISchema"  data="event"></jsonforms>
+            <button  class="btn-primary" ng-click="tc.edit_event(event)">Submit</button>
+            <button  class="btn-warning" ng-click="tc.delete_event(event.id)">Delete</button>
+        </div uib-accordion-group>
+      </div>
+  </uib-accordion>
+</div>

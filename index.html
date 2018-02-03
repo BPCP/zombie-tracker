@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" ng-app="ZMain">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Zombie Task Force</title>
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/jsonforms-bootstrap.css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <script src="js/jsonforms.js"></script>
+    <script src="js/jsonforms-bootstrap.js"></script>
+	<script src="js/angular-locale_en-us.js"></script>
+
+
+    <script src="zombie.controller.js"></script>
+    <script src="group_buttons.js"></script>
+    <script src="services.js"></script>
+    <script src="event_group.schema.js"></script>
+    <script src="event_group.uischema.js"></script>
+</head>
+<body style="max-width:1200px; margin:1vw auto;" ng-controller="FullPage as tc">
+	<div class="panel panel-primary" >
+    <div class="panel-heading">
+        <div class="panel-title">
+			<span>Parcel Id: {{tc.data.parcel_id}}</span>
+			<span>Address: {{tc.data.address}}</span>
+			<span style="float:right" class="ui-widget">
+				<input id="auto_complete_address" placeholder="Enter Address" style="color:black">
+			</span>
+        </div>
+    </div>
+    <div class="panel-body " style="line-height: 2.0">
+		<div class="row">
+			<div class="col-sm-2" >
+
+
+      <z-category-buttons></z-category-buttons>
+			</div>
+      <ng-include src="'events.html'">
+		</div>
+    </div>
+
+
+</body>
+</html>

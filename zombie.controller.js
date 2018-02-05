@@ -1,15 +1,15 @@
-var app = angular.module('ZMain', ['ngFileUpload', 'jsonforms', 'jsonforms-bootstrap']);
+var app = angular.module('ZMain', [ 'jsonforms', 'jsonforms-bootstrap']);
 app.constant('apiBase', 'https://zdata.bpcphosting.org');
 
-app.controller('FullPage', ['data_schemas', 'UISchemas', '$scope', '$http', 'init_autoComplete', 'event_groups',
-  function(data_schemas, UISchemas, $scope, $http, init_autoComplete, event_groups) {
+app.controller('FullPage', ['events_api','documents','data_schemas', 'UISchemas', '$scope', '$http', 'init_autoComplete', 'event_groups',
+  function(events_api,documents,data_schemas, UISchemas, $scope, $http, init_autoComplete, event_groups) {
     var vm = this;
 
-
-    //vm.event_groups = event_groups;
+		vm.events_api = events_api;
     vm.data = init_autoComplete;
     vm.data.events = [];
-    vm.group = '';
+    vm.group = 'Utilities';
+		vm.documents = documents;
 
     vm.change_event_types_schema = function(e) {
       vm.taskSchema = data_schemas[vm.group];
@@ -45,23 +45,7 @@ app.controller('FullPage', ['data_schemas', 'UISchemas', '$scope', '$http', 'ini
           vm.refresh_events(vm.data.parcel_id);
         });
     }
-		vm.upload_file = function(files) {
-			var fd = new FormData();
-    //Take the first selected file
-    	fd.append("file", files[0]);
-			$http({
-				method : "POST",
-				url : apiBase + "/upload.php",
-				headers: {
-						"Content-Type": undefined
-					},
-				data: fd
 
-			})
-				.then(function(response) {
-
-				});
-		}
     vm.refresh_events = function(parcel_id) {
       $http.get(apiBase + "/api.php/events?filter=parcel,eq," + parcel_id)
         .then(function(response) {

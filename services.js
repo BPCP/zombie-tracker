@@ -22,8 +22,8 @@ var apiBase='https://zdata.bpcphosting.org';
 	 );
 
 
-ZMain.factory('init_autoComplete', ['search_list','$http',
-	function(search_list,$http) {
+ZMain.factory('init_autoComplete', ['search_list','events_api','$http',
+	function(search_list,events_api,$http) {
 	var vm = {"parcel_id":"enter address","address":""};
 		$(function () {
 			auto_complete_address=  $( "#auto_complete_address" ).autocomplete({
@@ -34,21 +34,23 @@ ZMain.factory('init_autoComplete', ['search_list','$http',
 
 					vm.parcel_id=ui.item.parcel_id;
 					vm.address=ui.item.label;
-					$http.get(apiBase+"/api.php/events?filter=parcel,eq,"+ui.item.parcel_id)
-						.then(function(response){
-							var records = response.data.events.records;
-							var columns =response.data.events.columns;
-							//convert results to an array of objects
-							var t = [];
-							for (var i = 0; i < records.length; i++) {
-								rec ={};
-								for (var ii = 0; ii < records[i].length; ii++) {
-									rec[columns[ii]] = records[i][ii];
-								}
-								t.push(rec);
-							}
-							vm.events = t;
-						});
+					events_api.refresh_events(ui.item.parcel_id);
+
+					// $http.get(apiBase+"/api.php/events?filter=parcel,eq,"+ui.item.parcel_id)
+					// 	.then(function(response){
+					// 		var records = response.data.events.records;
+					// 		var columns =response.data.events.columns;
+					// 		//convert results to an array of objects
+					// 		var t = [];
+					// 		for (var i = 0; i < records.length; i++) {
+					// 			rec ={};
+					// 			for (var ii = 0; ii < records[i].length; ii++) {
+					// 				rec[columns[ii]] = records[i][ii];
+					// 			}
+					// 			t.push(rec);
+					// 		}
+					// 		vm.events = t;
+					// 	});
 					}
 				});
 

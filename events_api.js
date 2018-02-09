@@ -23,7 +23,9 @@ ZMain.factory('events_api', function($http) {
     var new_event = {
       "group": group,
       "parcel": parcel,
-      "effective_date": today
+      "effective_date": today,
+      "action": "new "+group,
+      "xdata":{}
     }
     vm.events.push(new_event);
     $http.post(apiBase + "/api.php/events/", new_event)

@@ -1,6 +1,6 @@
 var app = angular.module('ZMain');
 
-app.constant('event_groups',["Reporting","Legal","Contacts","Utilities","Inspections","Outreach","Referal","State DB"]);
+app.constant('event_groups',["Reporting","Legal","Contacts","Utilities","Inspection","Outreach","Referal","State DB"]);
 
 // https://medium.com/@cironunesdev/angularjs-how-to-name-directives-118ac44b81d4
 app.directive("zCategoryButtons", ["event_groups",function(event_groups) {

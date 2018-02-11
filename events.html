@@ -3,7 +3,7 @@
   <uib-accordion close-others="true" >
       <div ng-repeat="event in tc.events_api.events  | filter : {group:tc.group}:true">
         <div uib-accordion-group class="panel-default" heading="{{event.action}} - {{event.effective_date}}" is-open="false" >
-            <jsonforms schema="tc.taskSchema" uischema="tc.taskUISchema"  data="event"></jsonforms>
+            <jsonforms schema="tc.Schema" uischema="tc.UISchema"  data="event"></jsonforms>
             <input type="file" name="file" data-event={{event.id}} onchange="angular.element(this).scope().tc.documents.upload_file(this)"/>
             <button  class="btn-primary" ng-click="tc.events_api.edit(event)">Submit</button>
             <button  class="btn-warning" ng-click="tc.events_api.delete(event)">Delete</button>

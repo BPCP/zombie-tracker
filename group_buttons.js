@@ -15,9 +15,3 @@ app.directive("zCategoryButtons", ["event_groups",function(event_groups) {
         template : btns
     };
 }]);
-
-// <button ng-repeat="x in tc.event_types"
-// style="display:block;width:100%"
-// ng-click="tc.change_event_types_schema($event)">
-//   {{ x }}
-// </button>

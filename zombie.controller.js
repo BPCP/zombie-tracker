@@ -1,19 +1,27 @@
-var app = angular.module('ZMain', [ 'jsonforms', 'jsonforms-bootstrap']);
+var app = angular.module('ZMain', ['ngCookies', 'jsonforms', 'jsonforms-bootstrap']);
 app.constant('apiBase', 'https://zdata.bpcphosting.org');
 
-app.controller('FullPage', ['events_api','documents','data_schemas', 'UISchemas', '$scope', '$http', 'init_autoComplete', 'event_groups',
-  function(events_api,documents,data_schemas, UISchemas, $scope, $http, init_autoComplete, event_groups) {
+app.controller('FullPage', ['events_api','documents','data_schemas', 'UISchemas', '$scope', '$http', 'init_autoComplete', 'event_groups', '$cookies',
+  function(events_api,documents,data_schemas, UISchemas, $scope, $http, init_autoComplete, event_groups, $cookies) {
     var vm = this;
+  //   $cookies.put('NameOfMyCookie',"Setting a value");
+  //  alert($cookies.get('NameOfMyCookie'));
 
 		vm.events_api = events_api;
     vm.data = init_autoComplete;
     vm.data.events = [];
-    vm.group = 'Utilities';
+    vm.data.parcel_id = $cookies.get('parcel_id');
+    vm.data.address = $cookies.get('address');
+    events_api.refresh_events(vm.data.parcel_id);
+    vm.group = $cookies.get('group');
+    vm.Schema = data_schemas[vm.group];
+    vm.UISchema = UISchemas[vm.group];
 		vm.documents = documents;
 
     vm.change_event_types_schema = function(e) {
-      vm.taskSchema = data_schemas[vm.group];
-      vm.taskUISchema = UISchemas[vm.group];
+      $cookies.put('group',vm.group,{"expires":"Fri, 13 Mar 2030 12:00:00 UTC"});
+      vm.Schema = data_schemas[vm.group];
+      vm.UISchema = UISchemas[vm.group];
     }
 
     vm.edit_event = function(data) {

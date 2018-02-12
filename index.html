@@ -14,12 +14,11 @@
 
 
 
-    <script src="js/jsonforms.js"></script>
-    <script src="js/jsonforms-bootstrap.js"></script>
     <script src="js/angularjs/angular.js"></script>
     <script src="js/angularjs/angular-cookies.js"></script>
-
-
+    <script src="js/angularjs/angular-route.js"></script>
+    <script src="js/jsonforms.js"></script>
+    <script src="js/jsonforms-bootstrap.js"></script>
 
 
 
@@ -31,28 +30,7 @@
     <script src="event_group.uischema.js"></script>
     <script src="documents.js"></script>
 </head>
-<body style="max-width:1200px; margin:1vw auto;" ng-controller="FullPage as tc">
-	<div class="panel panel-primary" >
-    <div class="panel-heading">
-        <div class="panel-title">
-			<span>Parcel Id: {{tc.data.parcel_id}}</span>
-			<span>Address: {{tc.data.address}}</span>
-			<span style="float:right" class="ui-widget">
-				<input id="auto_complete_address" placeholder="Enter Address" style="color:black">
-			</span>
-        </div>
-    </div>
-    <div class="panel-body " style="line-height: 2.0">
-		<div class="row">
-			<div class="col-sm-2" >
+<ng-view>
 
-
-      <z-category-buttons></z-category-buttons>
-			</div>
-      <ng-include src="'events.html'">
-		</div>
-    </div>
-
-
-</body>
+</ng-view>
 </html>

@@ -1,27 +1,7 @@
-var app = angular.module('ZMain', ['ngRoute','ngCookies', 'jsonforms', 'jsonforms-bootstrap']);
-app.constant('apiBase', 'https://zdata.bpcphosting.org');
-
-app.config(function($routeProvider) {
-    $routeProvider
-    .when("/", {
-        templateUrl : "office.htm",
-        controller : "FullPage as tc"
-    })
-    .when("/london", {
-        templateUrl : "office.htm",
-        controller : "FullPage"
-    })
-    .when("/paris", {
-        templateUrl : "paris.htm",
-        controller : "parisCtrl"
-    });
-});
-
-app.controller('FullPage', ['events_api','documents','data_schemas', 'UISchemas', '$scope', '$http', 'init_autoComplete', 'event_groups', '$cookies',
+app.controller('office_controller', ['events_api','documents','data_schemas', 'UISchemas', '$scope', '$http', 'init_autoComplete', 'event_groups', '$cookies',
   function(events_api,documents,data_schemas, UISchemas, $scope, $http, init_autoComplete, event_groups, $cookies) {
     var vm = this;
-  //   $cookies.put('NameOfMyCookie',"Setting a value");
-  //  alert($cookies.get('NameOfMyCookie'));
+
 
 		vm.events_api = events_api;
     vm.data = init_autoComplete;
